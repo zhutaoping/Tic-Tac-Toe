@@ -7,12 +7,16 @@ const player = (sign) => {
 };
 
 const game = () => {
+  const container = document.querySelector(".container");
   const board = document.querySelector(".board");
   const grids = document.querySelectorAll(".grid");
   const resetBtn = document.querySelector("button");
 
   const imgCross = "./images/cross.png";
   const imgCircle = "./images/circle.png";
+
+  const initialLayout = board.innerHTML;
+  // console.log(initialLayout);
 
   let curSign = imgCircle;
   let curPlayer = circlePlayer;
@@ -21,9 +25,15 @@ const game = () => {
   board.addEventListener("click", _renderSign);
   resetBtn.addEventListener("click", _init);
 
+  function _checkMarked(e) {
+    return e.target.classList.contains("marked") ? true : false;
+  }
+
   function _renderSign(e) {
+    if (_checkMarked(e)) return;
     const gridEl = e.target.closest(".grid");
-    gridEl.innerHTML = `<img src='${curSign}'>`;
+    // gridEl.classList.add("marked");
+    gridEl.innerHTML = `<img class='marked' src='${curSign}'>`;
     curPlayer.moves.push(+e.target.id);
 
     _checkGameStatus();
@@ -58,7 +68,6 @@ const game = () => {
   }
 
   function _winnerScreen() {
-    // grids.forEach((el) => (el.style.display = "none"));
     board.style.background = "teal";
     board.style.display = "flex";
     board.style.alignItems = "center";
@@ -77,7 +86,11 @@ const game = () => {
       return;
     }
 
-    location.reload();
+    gameOver = true;
+    board.innerHTML = initialLayout;
+    board.addEventListener("click", _renderSign);
+    resetBtn.addEventListener("click", _init);
+    // location.reload();
   }
 };
 
