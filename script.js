@@ -32,7 +32,7 @@ const game = () => {
   function _renderSign(e) {
     if (_checkMarked(e)) return;
     const gridEl = e.target.closest(".grid");
-    // gridEl.classList.add("marked");
+    gridEl.classList.add("marked");
     gridEl.innerHTML = `<img class='marked' src='${curSign}'>`;
     curPlayer.moves.push(+e.target.id);
 
