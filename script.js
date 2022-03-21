@@ -1,10 +1,5 @@
 "use strict";
 
-const board = document.querySelector(".board");
-const grids = document.querySelector(".grid");
-const imgCross = "./images/cross.png";
-const imgCircle = "./images/circle.png";
-
 const player = (sign) => {
   const name = sign;
   const moves = [];
@@ -12,6 +7,12 @@ const player = (sign) => {
 };
 
 const game = () => {
+  const board = document.querySelector(".board");
+  const grids = document.querySelectorAll(".grid");
+
+  const imgCross = "./images/cross.png";
+  const imgCircle = "./images/circle.png";
+
   let curSign = imgCircle;
   let curPlayer = circlePlayer;
 
@@ -22,16 +23,17 @@ const game = () => {
     gridEl.innerHTML = `<img src='${curSign}'>`;
     curPlayer.moves.push(+e.target.id);
 
-    _checkStatus();
-    _nextPlayer();
+    _checkGameStatus();
+    _nextTurn();
   }
 
-  function _nextPlayer() {
+  function _nextTurn() {
     curSign = curSign === imgCircle ? imgCross : imgCircle;
+
     curPlayer = curPlayer === circlePlayer ? crossPlayer : circlePlayer;
   }
 
-  function _checkStatus() {
+  function _checkGameStatus() {
     const winIdNums = [
       [1, 2, 3],
       [4, 5, 6],
@@ -42,11 +44,23 @@ const game = () => {
       [1, 5, 9],
       [3, 5, 7],
     ];
-    // console.log(curPlayer);
+
     winIdNums.forEach((el) => {
-      if (el.every((e) => curPlayer.moves.includes(e)))
+      if (el.every((e) => curPlayer.moves.includes(e))) {
         console.log(`${curPlayer.name.toUpperCase()} WIN!`);
+
+        _winnerScreen();
+      }
     });
+  }
+
+  function _winnerScreen() {
+    grids.forEach((el) => (el.style.display = "none"));
+    board.style.background = "teal";
+    board.style.display = "flex";
+    board.style.alignItems = "center";
+    board.innerHTML = `<img src='${curSign}' width= '20%' height="20%">`;
+    board.innerHTML += "<h1>WIN!</h1>";
   }
 };
 
