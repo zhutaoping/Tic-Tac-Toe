@@ -24,17 +24,12 @@ const game = () => {
     curPlayer.moves.push(+e.target.id);
 
     _checkGameStatus();
+
     _nextTurn();
   }
 
-  function _nextTurn() {
-    curSign = curSign === imgCircle ? imgCross : imgCircle;
-
-    curPlayer = curPlayer === circlePlayer ? crossPlayer : circlePlayer;
-  }
-
   function _checkGameStatus() {
-    const winIdNums = [
+    const numsOnLine = [
       [1, 2, 3],
       [4, 5, 6],
       [7, 8, 9],
@@ -45,13 +40,18 @@ const game = () => {
       [3, 5, 7],
     ];
 
-    winIdNums.forEach((el) => {
+    numsOnLine.forEach((el) => {
       if (el.every((e) => curPlayer.moves.includes(e))) {
-        console.log(`${curPlayer.name.toUpperCase()} WIN!`);
-
         _winnerScreen();
+        // console.log(`${curPlayer.name.toUpperCase()} WIN!`);
       }
     });
+  }
+
+  function _nextTurn() {
+    curSign = curSign === imgCircle ? imgCross : imgCircle;
+
+    curPlayer = curPlayer === circlePlayer ? crossPlayer : circlePlayer;
   }
 
   function _winnerScreen() {
@@ -66,5 +66,4 @@ const game = () => {
 
 const circlePlayer = player("circle");
 const crossPlayer = player("cross");
-
 game();
