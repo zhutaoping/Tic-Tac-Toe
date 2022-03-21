@@ -1,23 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: teal;
   display: flex;
   justify-content: center;
-  padding: 50px;
+  align-items: center;
+  height: 100vh;
 }
 
 main {
-  /*  */
+  height: min(600px, 100%);
+  width: min(600px, 100%);
 }
 
 .board {
   background-color: rgba(10, 85, 85, 0.5);
-  width: 500px;
-  height: 500px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: 10px;
 }
 
 .grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: teal;
+}
+
+img {
+  max-width: 70%;
+  max-height: 70%;
 }
