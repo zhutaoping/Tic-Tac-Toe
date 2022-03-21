@@ -76,6 +76,8 @@ const game = () => {
   function _init() {
     circlePlayer.moves = [];
     crossPlayer.moves = [];
+    curSign = imgCircle;
+    curPlayer = circlePlayer;
     grids.forEach((grid) => grid.classList.remove("marked"));
 
     if (gameOver === false) {
