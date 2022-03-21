@@ -22,14 +22,14 @@ const game = () => {
   resetBtn.addEventListener("click", _init);
 
   function _checkMarked(e) {
-    return e.target.classList.contains("marked") ? true : false;
+    return e.classList.contains("marked") ? true : false;
   }
 
   function _renderSign(e) {
-    if (_checkMarked(e)) return;
     const gridEl = e.target.closest(".grid");
+    if (_checkMarked(gridEl)) return;
     gridEl.classList.add("marked");
-    gridEl.innerHTML = `<img class='marked' src='${curSign}'>`;
+    gridEl.innerHTML = `<img  src='${curSign}'>`;
     curPlayer.moves.push(+e.target.id);
 
     _checkGameStatus();
