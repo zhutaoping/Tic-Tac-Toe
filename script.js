@@ -7,16 +7,12 @@ const player = (sign) => {
 };
 
 const game = () => {
-  const container = document.querySelector(".container");
   const board = document.querySelector(".board");
   const grids = document.querySelectorAll(".grid");
   const resetBtn = document.querySelector("button");
 
   const imgCross = "./images/cross.png";
   const imgCircle = "./images/circle.png";
-
-  // const initialLayout = board.innerHTML;
-  // console.log(initialLayout);
 
   let curSign = imgCircle;
   let curPlayer = circlePlayer;
@@ -80,12 +76,12 @@ const game = () => {
   function _init() {
     circlePlayer.moves = [];
     crossPlayer.moves = [];
+    grids.forEach((grid) => grid.classList.remove("marked"));
 
     if (gameOver === false) {
       grids.forEach((grid) => (grid.innerHTML = ""));
       return;
     }
-
     gameOver = true;
     location.reload();
   }
