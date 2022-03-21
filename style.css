@@ -6,6 +6,7 @@
 body {
   background: teal;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -39,4 +40,8 @@ img {
 
 h1 {
   font-size: 9rem;
+}
+
+button {
+  padding: 8px;
 }
