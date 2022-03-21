@@ -15,7 +15,7 @@ const game = () => {
   const imgCross = "./images/cross.png";
   const imgCircle = "./images/circle.png";
 
-  const initialLayout = board.innerHTML;
+  // const initialLayout = board.innerHTML;
   // console.log(initialLayout);
 
   let curSign = imgCircle;
@@ -87,10 +87,7 @@ const game = () => {
     }
 
     gameOver = true;
-    board.innerHTML = initialLayout;
-    board.addEventListener("click", _renderSign);
-    resetBtn.addEventListener("click", _init);
-    // location.reload();
+    location.reload();
   }
 };
 
