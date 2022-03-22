@@ -13,8 +13,8 @@ body {
 }
 
 main {
-  height: min(600px, 100%);
-  width: min(600px, 100%);
+  height: min(400px, 100%);
+  width: min(400px, 100%);
 }
 
 .board {
