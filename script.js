@@ -67,7 +67,7 @@ const game = () => {
     board.style.background = "teal";
     board.style.display = "flex";
     board.style.alignItems = "center";
-    board.innerHTML = `<img src='${curSign}' width= '20%' height="20%">`;
+    board.innerHTML = `<img src='${curSign}' width= '16%' height="16%">`;
     board.innerHTML += "<h1>WIN!</h1>";
     gameOver = true;
     board.removeEventListener("click", _renderSign);

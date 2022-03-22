@@ -13,8 +13,8 @@ body {
 }
 
 main {
-  height: min(400px, 100%);
-  width: min(400px, 100%);
+  height: min(350px, 100%);
+  width: min(350px, 100%);
 }
 
 .board {
@@ -39,7 +39,7 @@ img {
 }
 
 h1 {
-  font-size: 7rem;
+  font-size: 5rem;
 }
 
 button {
